@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FinanceApp.Models.Expense>
+
+<h2>Expenses</h2>
+
+<div class="container">
+	<table class="table table-bordered">
+		<thead class="table-light">
+			<tr>
+				<th>Description</th>
+				<th>Amount</th>
+				<th>Category</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>@item.Description</td>
+					<td>@item.Amount $</td>
+					<td>@item.Category</td>
+					<td>@item.Date.ToString("yyyy-MM-dd")</td>
+				</tr>
+			}
+	</table>
+</div>
+
+<h2>Expenses OverView</h2>
+<div>
+	<canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+	const ctx = document.getElementById('myChart');
+
+	new Chart(ctx, {
+	  type: 'bar',
+	  data: {
+		labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+		datasets: [{
+		  label: '# of Votes',
+		  data: [12, 19, 3, 5, 2, 3],
+		  borderWidth: 1
+		}]
+	  },
+	  options: {
+		scales: {
+		  y: {
+			beginAtZero: true
+		  }
+		}
+	  }
+	});
+</script>
